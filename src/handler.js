@@ -37,10 +37,10 @@ const addNoteHandler = (request, h) => {
 };
 
 const getAllNotesHandler = () => ({
-    status: 'success',
-    data: {
-        notes,
-    },
+  status: 'success',
+  data: {
+    notes,
+  },
 });
 
 module.exports = { addNoteHandler, getAllNotesHandler };
