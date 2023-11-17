@@ -1,4 +1,4 @@
-const { addNoteHandler } = require("./handler");
+const { addNoteHandler } = require('./handler');
 
 const routes = [
   {
