@@ -1,8 +1,8 @@
 const { nanoid } = require('nanoid');
 const notes = require('./notes');
 
-const addNoteHandler = (request, h) => {
-  const { title, tags, body } = request.payload;
+const addNoteHandler = (request, h) => { // parameter h adalah berfungsi untuk mengubah nilai status response
+  const { title, tags, body } = request.payload; // berfungsi untuk mendapatkan data
 
   const id = nanoid(16);
   const createdAt = new Date().toISOString();
