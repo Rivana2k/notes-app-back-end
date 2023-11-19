@@ -1,7 +1,7 @@
 const { nanoid } = require('nanoid');
 const notes = require('./notes');
 
-const addNoteHandler = (request, h) => { // parameter h adalah berfungsi untuk mengubah nilai status response
+const addNoteHandler = (request, h) => { // mengubah nilai status
   const { title, tags, body } = request.payload; // berfungsi untuk mendapatkan data
 
   const id = nanoid(16);
@@ -80,16 +80,16 @@ const editNoteByIdHandler = (request, h) => {
       body,
       updatedAt,
     };
-    const response = h.response ({
+    const response = h.response({
       status: 'success',
       message: 'Catatan berhasil diperbarui',
     });
     response.code(200);
     return response;
   }
-  const response = h.response ({
+  const response = h.response({
     status: 'fail',
-    message: 'Gagal memperbarui catatan. Id tidak ditemukan'
+    message: 'Gagal memperbarui catatan. Id tidak ditemukan',
   });
   response.code(404);
   return response;
@@ -100,7 +100,7 @@ const deleteNoteByIdHandler = (request, h) => {
 
   const index = notes.findIndex((note) => note.id === id);
 
-  if(index !== -1) {
+  if (index !== -1) {
     notes.splice(index, 1);
     const response = h.response({
       status: 'success',
@@ -109,7 +109,7 @@ const deleteNoteByIdHandler = (request, h) => {
     response.code(200);
     return response;
   }
-  const response = h.responses ({
+  const response = h.responses({
     status: 'fail',
     message: 'Catatan gagal dihapus, Id tidak ditemukan',
   });
@@ -117,4 +117,10 @@ const deleteNoteByIdHandler = (request, h) => {
   return response;
 };
 
-module.exports = { addNoteHandler, getAllNotesHandler, getNoteByIdHandler, editNoteByIdHandler, deleteNoteByIdHandler };
+module.exports = {
+  addNoteHandler,
+  getAllNotesHandler,
+  getNoteByIdHandler,
+  editNoteByIdHandler,
+  deleteNoteByIdHandler,
+};
